@@ -19,17 +19,3 @@ export function multiplyMatrices(m1: number[][], m2: number[][]) {
 
   return resultingMatrix;
 }
-
-console.log(
-  multiplyMatrices(
-    [
-      [1, 4, -2],
-      [3, 5, -6],
-    ],
-    [
-      [5, 2, 8, -1],
-      [3, 6, 4, 5],
-      [-2, 9, 7, -3],
-    ]
-  )
-);
