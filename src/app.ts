@@ -3,9 +3,9 @@ import { multiplyMatrices } from "./matrix";
 import { createChart } from "./chart";
 
 const initialState = [[2], [2], [2], [2], [2], [2], [2], [2], [2], [2]];
-const activationState = [[1], [0], [0], [0], [0], [0], [0], [0], [0], [0]];
+const activationState = [[0], [2], [2], [0], [0], [0], [0], [0], [0], [0]];
 const interval = 1; // T
-const iterations = 10; // t
+const iterations = 20; // t
 const imitations = [activationState]; //pk
 const states = [initialState]; // V
 

@@ -54,6 +54,19 @@ Chart.register(
   SubTitle
 );
 
+const entities = [
+  "cats",
+  "mise",
+  "owls",
+  "crickets",
+  "lizards",
+  "bats",
+  "snakes",
+  "toads",
+  "mosquitoes",
+  "hawks",
+];
+
 const colorPalette = [
   "#1746A2",
   "#5F9DF7",
@@ -74,7 +87,7 @@ export function createChart(chartData: number[][], iterations: number) {
       labels: new Array(iterations).fill(0).map((_, index) => index),
       datasets: chartData.map((d, index) => {
         return {
-          label: index,
+          label: `${index} ${entities[index]}`,
           backgroundColor: colorPalette[index],
           borderColor: colorPalette[index],
           data: d,
