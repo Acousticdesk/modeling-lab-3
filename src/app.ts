@@ -3,9 +3,10 @@ import { multiplyMatrices } from "./matrix";
 import { createChart } from "./chart";
 
 const initialState = [[2], [2], [2], [2], [2], [2], [2], [2], [2], [2]];
-const activationState = [[0], [2], [2], [0], [0], [0], [0], [0], [0], [0]];
+// more cats, less snakes = more crickets and periodic plot
+const activationState = [[0], [0], [0], [1], [0], [0], [0], [0], [0], [0]];
 const interval = 1; // T
-const iterations = 20; // t
+const iterations = 15; // t
 const imitations = [activationState]; //pk
 const states = [initialState]; // V
 
