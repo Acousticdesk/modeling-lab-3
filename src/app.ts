@@ -1,6 +1,6 @@
 import adjacencyMatrix from "./adjacencyMatrix";
 import { multiplyMatrices } from "./matrix";
-import { createChart } from "./chart";
+import { createActivationChart, createChart } from "./chart";
 
 const initialState = [[2], [2], [2], [2], [2], [2], [2], [2], [2], [2]];
 // 1. more cats, less snakes = more crickets and periodic plot
@@ -8,7 +8,7 @@ const initialState = [[2], [2], [2], [2], [2], [2], [2], [2], [2], [2]];
 // 3. all the prey activation
 const activationState = [[0], [1], [0], [1], [0], [1], [0], [0], [1], [0]];
 const interval = 1; // T
-const iterations = 5; // t
+const iterations = 105; // t
 const imitations = [activationState]; //pk
 const states = [initialState]; // V
 
@@ -42,6 +42,16 @@ for (let i = 0; i < initialState.length; i += 1) {
   }
 }
 
+const activationChartData: number[][] = [];
+
+for (let i = 0; i < activationState.length; i += 1) {
+  activationChartData[i] = [];
+  for (let j = 0; j < imitations.length; j += 1) {
+    activationChartData[i].push(imitations[j][i][0]);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  createActivationChart(activationChartData, iterations);
   createChart(chartData, iterations);
 });

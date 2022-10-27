@@ -99,3 +99,32 @@ export function createChart(chartData: number[][], iterations: number) {
 
   new Chart(document.getElementById("chart") as HTMLCanvasElement, config);
 }
+
+export function createActivationChart(
+  chartData: number[][],
+  iterations: number
+) {
+  const config = {
+    type: "line",
+    data: {
+      labels: new Array(iterations).fill(0).map((_, index) => index),
+      datasets: chartData.map((d, index) => {
+        const color =
+          colorPalette[index] ||
+          Math.round(Math.random() * colorPalette.length);
+        return {
+          label: index,
+          backgroundColor: color,
+          borderColor: color,
+          data: d,
+        };
+      }),
+    },
+    options: {},
+  };
+
+  new Chart(
+    document.getElementById("activation_chart") as HTMLCanvasElement,
+    config
+  );
+}
