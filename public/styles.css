@@ -11,6 +11,17 @@ body {
     margin: 0 0 20px 0;
 }
 
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+
 label[for*="cats"] {
     color: #1746A2;
 }
