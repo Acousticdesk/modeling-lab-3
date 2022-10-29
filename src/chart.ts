@@ -80,26 +80,6 @@ const colorPalette = [
   "#FB2576",
 ];
 
-export function createChart(chartData: number[][], iterations: number) {
-  const config = {
-    type: "line",
-    data: {
-      labels: new Array(iterations).fill(0).map((_, index) => index),
-      datasets: chartData.map((d, index) => {
-        return {
-          label: `${index} ${entities[index]}`,
-          backgroundColor: colorPalette[index],
-          borderColor: colorPalette[index],
-          data: d,
-        };
-      }),
-    },
-    options: {},
-  };
-
-  new Chart(document.getElementById("chart") as HTMLCanvasElement, config);
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   const referenceElement = document.getElementById("charts");
   const activationStateChartElement = document
@@ -124,6 +104,37 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 });
 
+let chart: Chart;
+
+export function createChart(chartData: number[][], iterations: number) {
+  const config = {
+    type: "line",
+    data: {
+      labels: new Array(iterations).fill(0).map((_, index) => index),
+      datasets: chartData.map((d, index) => {
+        return {
+          label: `${index} ${entities[index]}`,
+          backgroundColor: colorPalette[index],
+          borderColor: colorPalette[index],
+          data: d,
+        };
+      }),
+    },
+    options: {},
+  };
+
+  if (chart) {
+    chart.destroy();
+  }
+
+  chart = new Chart(
+    document.getElementById("chart") as HTMLCanvasElement,
+    config
+  );
+}
+
+let activationChart: Chart;
+
 export function createActivationChart(
   chartData: number[][],
   iterations: number
@@ -147,7 +158,11 @@ export function createActivationChart(
     options: {},
   };
 
-  new Chart(
+  if (activationChart) {
+    activationChart.destroy();
+  }
+
+  activationChart = new Chart(
     document.getElementById("activation_chart") as HTMLCanvasElement,
     config
   );

@@ -1,54 +1,64 @@
 import adjacencyMatrix from "./adjacencyMatrix";
 import { multiplyMatrices } from "./matrix";
 import { createActivationChart, createChart } from "./chart";
+import { serializeForm } from "./form";
+import { modelingDataPresenter } from "./modelingDataPresenter";
 
-const initialState = [[2], [2], [2], [2], [2], [2], [2], [2], [2], [2]];
+const interval = 1; // T
+const iterations = 5; // t
+
 // 1. more cats, less snakes = more crickets and periodic plot
 // 2. all the predators activation
 // 3. all the prey activation
-const activationState = [[0], [1], [0], [1], [0], [1], [0], [0], [1], [0]];
-const interval = 1; // T
-const iterations = 5; // t
-const imitations = [activationState]; //pk
-const states = [initialState]; // V
+function startModeling(initialState: number[][], activationState: number[][]) {
+  // const initialState = [[2], [2], [2], [2], [2], [2], [2], [2], [2], [2]];
+  // const activationState = [[0], [1], [0], [1], [0], [1], [0], [0], [1], [0]];
+  const imitations = [activationState]; //pk
+  const states = [initialState]; // V
 
-for (let i = 0; i < iterations; i += interval) {
-  const nextImitation = multiplyMatrices(
-    adjacencyMatrix,
-    imitations[imitations.length - 1]
-  );
-  imitations.push(nextImitation);
-}
-
-for (let i = 0; i < iterations; i += interval) {
-  const state = states[i]; // V(k - 1)
-  const imitation = imitations[i]; // p(k - 1)
-
-  const nextState: number[][] = [];
-
-  for (let j = 0; j < state.length; j += 1) {
-    nextState[j] = [state[j][0] + imitation[j][0]];
+  for (let i = 0; i < iterations; i += interval) {
+    const nextImitation = multiplyMatrices(
+      adjacencyMatrix,
+      imitations[imitations.length - 1]
+    );
+    imitations.push(nextImitation);
   }
 
-  states.push(nextState);
-}
+  for (let i = 0; i < iterations; i += interval) {
+    const state = states[i]; // V(k - 1)
+    const imitation = imitations[i]; // p(k - 1)
 
-const chartData: number[][] = [];
+    const nextState: number[][] = [];
 
-for (let i = 0; i < initialState.length; i += 1) {
-  chartData[i] = [];
-  for (let j = 0; j < states.length; j += 1) {
-    chartData[i].push(states[j][i][0]);
+    for (let j = 0; j < state.length; j += 1) {
+      nextState[j] = [state[j][0] + imitation[j][0]];
+    }
+
+    states.push(nextState);
   }
-}
 
-const activationChartData: number[][] = [];
+  const chartData: number[][] = [];
 
-for (let i = 0; i < activationState.length; i += 1) {
-  activationChartData[i] = [];
-  for (let j = 0; j < imitations.length; j += 1) {
-    activationChartData[i].push(imitations[j][i][0]);
+  for (let i = 0; i < initialState.length; i += 1) {
+    chartData[i] = [];
+    for (let j = 0; j < states.length; j += 1) {
+      chartData[i].push(states[j][i][0]);
+    }
   }
+
+  const activationChartData: number[][] = [];
+
+  for (let i = 0; i < activationState.length; i += 1) {
+    activationChartData[i] = [];
+    for (let j = 0; j < imitations.length; j += 1) {
+      activationChartData[i].push(imitations[j][i][0]);
+    }
+  }
+
+  return {
+    chartData,
+    activationChartData,
+  };
 }
 
 (
@@ -62,6 +72,12 @@ for (let i = 0; i < activationState.length; i += 1) {
   (
     document.getElementById("system_state_chart_container") as HTMLCanvasElement
   ).hidden = false;
+
+  const { chartData, activationChartData } = startModeling(
+    modelingDataPresenter(serializeForm("#initial_state_form")),
+    modelingDataPresenter(serializeForm("#activation_state_form"))
+  );
+
   createActivationChart(activationChartData, iterations);
   createChart(chartData, iterations);
 });
