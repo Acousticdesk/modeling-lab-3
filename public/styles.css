@@ -1,3 +1,53 @@
 html, body {
     height: 100vh;
 }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.forms {
+    display: flex;
+    margin: 0 0 20px 0;
+}
+
+label[for*="cats"] {
+    color: #1746A2;
+}
+
+label[for*="mise"] {
+    color: #5F9DF7;
+}
+
+label[for*="owls"] {
+    color: #B73E3E;
+}
+
+label[for*="crickets"] {
+    color: #FF731D;
+}
+
+label[for*="lizards"] {
+    color: #D8D9CF;
+}
+
+label[for*="bats"] {
+    color: #4E6C50;
+}
+
+label[for*="snakes"] {
+    color: #AA8B56;
+}
+
+label[for*="toads"] {
+    color: #4649FF;
+}
+
+label[for*="mosquitoes"] {
+    color: #00ABB3;
+}
+
+label[for*="hawks"] {
+    color: #FB2576;
+}
+

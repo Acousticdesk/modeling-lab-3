@@ -9,8 +9,68 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+    <div class="forms">
+        <form id="initial_state_form">
+            <fieldset>
+                <legend>Please set an initial state of the system</legend>
+
+                <label for="cats_initial">Cats</label>
+                <input id="cats_initial" placeholder="cats" type="number" name="cats" value="0">
+                <label for="mise_initial">Mise</label>
+                <input id="mise_initial" placeholder="mise" type="number" name="mise" value="0">
+                <label for="owls_initial">Owls</label>
+                <input id="owls_initial" placeholder="owls" type="number" name="owls" value="0">
+                <label for="crickets_initial">Crickets</label>
+                <input id="crickets_initial" placeholder="crickets" type="number" name="crickets" value="0">
+                <label for="lizards_initial">Lizards</label>
+                <input id="lizards_initial" placeholder="lizards" type="number" name="lizards" value="0">
+                <label for="bats_initial">Bats</label>
+                <input id="bats_initial" placeholder="bats" type="number" name="bats" value="0">
+                <label for="snakes_initial">Snakes</label>
+                <input id="snakes_initial" placeholder="snakes" type="number" name="snakes" value="0">
+                <label for="toads_initial">Toads</label>
+                <input id="toads_initial" placeholder="toads" type="number" name="toads" value="0">
+                <label for="mosquitoes_initial">Mosquitoes</label>
+                <input id="mosquitoes_initial" placeholder="mosquitoes" type="number" name="mosquitoes" value="0">
+                <label for="hawks_initial">Hawks</label>
+                <input id="hawks_initial" placeholder="hawks" type="number" name="hawks" value="0">
+            </fieldset>
+        </form>
+
+        <form id="activation_state_form">
+            <fieldset>
+                <legend>Please set an activation state parameters</legend>
+
+                <label for="cats_activation">Cats</label>
+                <input id="cats_activation" placeholder="cats" type="number" name="cats" value="0">
+                <label for="mise_activation">Mise</label>
+                <input id="mise_activation" placeholder="mise" type="number" name="mise" value="0">
+                <label for="owls_activation">Owls</label>
+                <input id="owls_activation" placeholder="owls" type="number" name="owls" value="0">
+                <label for="crickets_activation">Crickets</label>
+                <input id="crickets_activation" placeholder="crickets" type="number" name="crickets" value="0">
+                <label for="lizards_activation">Lizards</label>
+                <input id="lizards_activation" placeholder="lizards" type="number" name="lizards" value="0">
+                <label for="bats_activation">Bats</label>
+                <input id="bats_activation" placeholder="bats" type="number" name="bats" value="0">
+                <label for="snakes_activation">Snakes</label>
+                <input id="snakes_activation" placeholder="snakes" type="number" name="snakes" value="0">
+                <label for="toads_activation">Toads</label>
+                <input id="toads_activation" placeholder="toads" type="number" name="toads" value="0">
+                <label for="mosquitoes_activation">Mosquitoes</label>
+                <input id="mosquitoes_activation" placeholder="mosquitoes" type="number" name="mosquitoes" value="0">
+                <label for="hawks_activation">Hawks</label>
+                <input id="hawks_activation" placeholder="hawks" type="number" name="hawks" value="0">
+            </fieldset>
+        </form>
+    </div>
+
+    <h2>Activation States Graph</h2>
     <canvas id="activation_chart"></canvas>
+
+    <h2>System State Change in Time Graph</h2>
     <canvas id="chart"></canvas>
+
     <script src="../dist/bundle.js"></script>
 </body>
 </html>
