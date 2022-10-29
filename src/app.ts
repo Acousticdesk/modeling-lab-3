@@ -8,7 +8,7 @@ const initialState = [[2], [2], [2], [2], [2], [2], [2], [2], [2], [2]];
 // 3. all the prey activation
 const activationState = [[0], [1], [0], [1], [0], [1], [0], [0], [1], [0]];
 const interval = 1; // T
-const iterations = 105; // t
+const iterations = 5; // t
 const imitations = [activationState]; //pk
 const states = [initialState]; // V
 
