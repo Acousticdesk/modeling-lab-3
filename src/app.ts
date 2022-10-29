@@ -51,7 +51,17 @@ for (let i = 0; i < activationState.length; i += 1) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+(
+  document.querySelector('button[type="submit"]') as HTMLButtonElement
+).addEventListener("click", () => {
+  (
+    document.getElementById(
+      "activation_state_chart_container"
+    ) as HTMLCanvasElement
+  ).hidden = false;
+  (
+    document.getElementById("system_state_chart_container") as HTMLCanvasElement
+  ).hidden = false;
   createActivationChart(activationChartData, iterations);
   createChart(chartData, iterations);
 });

@@ -100,6 +100,30 @@ export function createChart(chartData: number[][], iterations: number) {
   new Chart(document.getElementById("chart") as HTMLCanvasElement, config);
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const referenceElement = document.getElementById("charts");
+  const activationStateChartElement = document
+    .getElementById("activation_state_chart_container")
+    .querySelector("canvas");
+  activationStateChartElement.setAttribute(
+    "width",
+    referenceElement.clientWidth
+  );
+  activationStateChartElement.setAttribute(
+    "height",
+    referenceElement.clientHeight - 100
+  );
+
+  const systemStateChartElement = document
+    .getElementById("system_state_chart_container")
+    .querySelector("canvas");
+  systemStateChartElement.setAttribute("width", referenceElement.clientWidth);
+  systemStateChartElement.setAttribute(
+    "height",
+    referenceElement.clientHeight - 100
+  );
+});
+
 export function createActivationChart(
   chartData: number[][],
   iterations: number

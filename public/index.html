@@ -10,6 +10,8 @@
 </head>
 <body>
     <div class="container">
+        <h1>Ecological Processes Modeling based on Graphs Theory</h1>
+
         <div class="forms">
             <form id="initial_state_form">
                 <fieldset>
@@ -109,11 +111,21 @@
             </form>
         </div>
 
-        <h2>Activation States Graph</h2>
-        <canvas id="activation_chart"></canvas>
+        <div class="submit-container">
+            <button type="submit">Submit</button>
+        </div>
 
-        <h2>System State Change in Time Graph</h2>
-        <canvas id="chart"></canvas>
+        <div id="charts">
+            <div hidden id="activation_state_chart_container">
+                <h2>Activation State Chart</h2>
+                <canvas id="activation_chart"></canvas>
+            </div>
+
+            <div hidden id="system_state_chart_container">
+                <h2>System State Change Over Time Chart</h2>
+                <canvas id="chart"></canvas>
+            </div>
+        </div>
     </div>
 
     <script src="../dist/bundle.js"></script>
