@@ -148,7 +148,7 @@ export function createActivationChart(
           colorPalette[index] ||
           Math.round(Math.random() * colorPalette.length);
         return {
-          label: index,
+          label: `${index} ${entities[index]}`,
           backgroundColor: color,
           borderColor: color,
           data: d,
