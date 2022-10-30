@@ -5,12 +5,15 @@ import { serializeForm } from "./form";
 import { modelingDataPresenter } from "./modelingDataPresenter";
 
 const interval = 1; // T
-const iterations = 5; // t
 
 // 1. more cats, less snakes = more crickets and periodic plot
 // 2. all the predators activation
 // 3. all the prey activation
-function startModeling(initialState: number[][], activationState: number[][]) {
+function startModeling(
+  initialState: number[][],
+  activationState: number[][],
+  iterations: number
+) {
   // const initialState = [[2], [2], [2], [2], [2], [2], [2], [2], [2], [2]];
   // const activationState = [[0], [1], [0], [1], [0], [1], [0], [0], [1], [0]];
   const imitations = [activationState]; //pk
@@ -73,9 +76,14 @@ function startModeling(initialState: number[][], activationState: number[][]) {
     document.getElementById("system_state_chart_container") as HTMLCanvasElement
   ).hidden = false;
 
+  const iterations: number = serializeForm(
+    "#number_of_iterations_form"
+  )?.[0] as number;
+
   const { chartData, activationChartData } = startModeling(
     modelingDataPresenter(serializeForm("#initial_state_form")),
-    modelingDataPresenter(serializeForm("#activation_state_form"))
+    modelingDataPresenter(serializeForm("#activation_state_form")),
+    iterations
   );
 
   createActivationChart(activationChartData, iterations);
